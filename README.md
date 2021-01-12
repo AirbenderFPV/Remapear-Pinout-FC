@@ -28,7 +28,16 @@ resource LED_STRIP 1 none
 ### Te faltan Serial Ports o UARTS?    
 Si te faltan serial ports o UARTS, puedes convertir algunos pats a serial port, con la opción Soft Serial.    
 
-Por ejemplo, puedes usar los puertos de LED_STRIP, PPM y Motores que no uses.    
+Por ejemplo, puedes usar los puertos de LED_STRIP, PPM y Motores que no uses.  
+En este ejemplo borraremos la función del pin PPM (controlamos nuestro quad con el protocolo I.bus / S.Bus) y lo habilitaremos como un TX mas, en este caso el 11. 
+Previamente ejecutando el comando resource podemos ver que pin ocupa nuestro PPM, en este caso es el C09, puede variar en cada controladora.  
+
+resource PPM 1 NONE   
+resource SERIAL_TX 11 C09    
+feature SOFTSERIAL  
+serial 2 2 115200 57600 0 115200  
+serial 30 2048 115200 57600 0 115200  
+save  
 
 ### Que pads no pueden ser remapeados?  
 
